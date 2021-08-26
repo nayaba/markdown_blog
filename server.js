@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
         title: 'Test Article',
         createdAt: new Date(),
         description: 'Test description'
+    }, {
+        title: 'Test Article',
+        createdAt: new Date(),
+        description: 'Test description'
     }]
     res.render('articles/index', { articles: articles }) // like props, passing articles to index.ejs
 })
