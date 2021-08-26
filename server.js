@@ -5,7 +5,7 @@ const Article = require('./models/article')
 
 const articleRouter = require('./routes/articles')
 
-mongoose.connect('mongodb://127.0.0.1:27017/blog', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://127.0.0.1:27017/blog', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 console.log('Server is up and running!')
 
