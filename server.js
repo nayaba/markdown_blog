@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 
 const articleRouter = require('./routes/articles')
+
+mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true, useUnifiedTopology: true })
 
 console.log('Server is up and running!')
 
@@ -10,6 +13,7 @@ app.set('view engine', 'ejs')
 
 
 app.use('/articles', articleRouter)
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
     const articles = [{
