@@ -29,12 +29,9 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async (req, res) => {
-    try {
+router.delete('/:id', async (req, res) => {
         await Article.findByIdAndDelete(req.params.id)
-    } catch (e) {
         res.redirect('/')
-    }
 
 })
 
