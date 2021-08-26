@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    let article = new Article({ // important that this is let not const
+    let article = new Article({
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown

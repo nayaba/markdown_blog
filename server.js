@@ -5,7 +5,7 @@ const Article = require('./models/article')
 
 const articleRouter = require('./routes/articles')
 
-mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://127.0.0.1:27017/blog', { useNewUrlParser: true, useUnifiedTopology: true })
 
 console.log('Server is up and running!')
 
@@ -15,17 +15,12 @@ app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended: false })) // unhandled promise cannot read property 'title' of undefined if the urlencoder is *after* app.use
 
-// app.get('/', (req, res) => {
-//     const articles = Article.find()
-//     // .sort({
-//     //     createdAt: 'desc'
-//     // })
-//     res.render('articles/index', { articles: articles }) // like props, passing articles to index.ejs
-// })
 app.get('/', async (req, res) => {
     try {
         console.log('index request: ', req.body)
-        const articles = await Article.find()
+        const articles = await Article.find().sort({
+          createdAt: 'desc'
+        })
         return res.render('articles/index', { articles: articles })
       } catch (error) {
         return res.status(500).send(error.message)
