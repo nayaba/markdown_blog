@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')  
 const marked = require('marked')
 const slugify = require('slugify')
+const { TextEncoder, TextDecoder } = require('util')
+global.TextEncoder = TextEncoder
+global.TextDecoder = TextDecoder
 const createDomPurify = require('dompurify')
 const  { JSDOM } = require('jsdom')
 const dompurify = createDomPurify(new JSDOM().window)
