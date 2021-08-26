@@ -1,6 +1,13 @@
 const mongoose = require('mongoose')  
 const marked = require('marked')
 const slugify = require('slugify')
+const createDomPurify = require('dompurify')
+const { TextEncoder, TextDecoder } = require('util')
+global.TextEncoder = TextEncoder
+global.TextDecoder = TextDecoder
+const jsdom = require('jsdom')
+const { JSDOM } = jsdom
+
 
 const articleSchema = new mongoose.Schema({
     title: {
